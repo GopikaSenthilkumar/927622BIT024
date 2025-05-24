@@ -1,0 +1,156 @@
+/* Custom base styles with unique animations */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background: #000;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+  color: #00ff9d;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Custom selection styling */
+::selection {
+  background: rgba(0, 255, 157, 0.3);
+  color: #00ff9d;
+  text-shadow: 0 0 5px #00ff9d;
+}
+
+/* Custom focus styles */
+:focus {
+  outline: 2px solid #00ff9d;
+  outline-offset: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00ff9d, #00cc7e);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00cc7e, #00ff9d);
+}
+
+/* Form elements */
+button,
+select,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ff9d;
+  border: 1px solid #00ff9d;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 157, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* Lists */
+ul, ol {
+  list-style: none;
+}
+
+/* Media elements */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* Root context */
+#root {
+  isolation: isolate;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d; }
+  to { text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 30px #00ff9d; }
+}
+
+/* Apply animations to elements */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+} 

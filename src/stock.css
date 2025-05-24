@@ -1,0 +1,288 @@
+/* Custom terminal theme with blue tones */
+.app-container {
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%); /* Very dark blue background */
+  color: #5ac8fa; /* A bright blue */
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(90, 200, 250, 0.05) 0px, /* Bright blue with transparency */
+    rgba(90, 200, 250, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  ), repeating-linear-gradient(
+    90deg,
+    rgba(90, 200, 250, 0.05) 0px,
+    rgba(90, 200, 250, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  animation: gridScan 8s linear infinite;
+}
+
+@keyframes gridScan {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  animation: blueGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes blueGlow {
+  from { text-shadow: 0 0 8px #5ac8fa, 0 0 15px #5ac8fa; } /* Bright blue glow */
+  to { text-shadow: 0 0 15px #5ac8fa, 0 0 25px #5ac8fa, 0 0 35px #5ac8fa; }
+}
+
+.controls-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.control-item::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #5ac8fa; /* Bright blue line */
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.control-item:hover::after {
+  transform: scaleX(1);
+}
+
+.label {
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #5ac8fa; /* Bright blue label color */
+  text-shadow: 0 0 5px rgba(90, 200, 250, 0.5); /* Bright blue shadow */
+}
+
+.select-input,
+.number-input {
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #5ac8fa; /* Bright blue border */
+  background-color: rgba(26, 26, 46, 0.8); /* Dark blue background with transparency */
+  color: #5ac8fa; /* Bright blue text */
+  min-width: 220px;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.select-input::before,
+.number-input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(90, 200, 250, 0.2), /* Bright blue with transparency */
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.select-input:hover::before,
+.number-input:hover::before {
+  left: 100%;
+}
+
+.select-input:hover,
+.number-input:hover {
+  box-shadow: 0 0 15px rgba(90, 200, 250, 0.3); /* Bright blue shadow */
+  transform: translateY(-2px);
+}
+
+.select-input:focus,
+.number-input:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(90, 200, 250, 0.4); /* Bright blue shadow */
+  border-color: #5ac8fa; /* Bright blue border */
+}
+
+.btn-primary {
+  margin-top: 1.8rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, #5ac8fa, #3a9bdb); /* Bright blue gradient */
+  color: #1a1a2e; /* Very dark blue text */
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(90, 200, 250, 0.4); /* Bright blue shadow */
+}
+
+.btn-primary:disabled {
+  background: linear-gradient(45deg, #1a1a2e, #0f0f23); /* Dark blue gradient */
+  cursor: not-allowed;
+  color: #666;
+  transform: none;
+  box-shadow: none;
+}
+
+.chart-wrapper {
+  margin-top: 2.5rem;
+  background: rgba(26, 26, 46, 0.8); /* Dark blue background with transparency */
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #5ac8fa; /* Bright blue border */
+  box-shadow: 0 0 30px rgba(90, 200, 250, 0.1); /* Bright blue shadow */
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(90, 200, 250, 0.03) 50%, /* Bright blue with transparency */
+    transparent 100%
+  );
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 26, 46, 0.8); /* Dark blue scrollbar track */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #5ac8fa, #3a9bdb); /* Bright blue gradient */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #3a9bdb, #5ac8fa);
+}
+
+.error-message {
+  color: #ff6347; /* Tomato - a contrasting color for errors */
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #ff6347; /* Tomato border */
+  border-radius: 4px;
+  background: rgba(255, 99, 71, 0.1); /* Tomato with transparency */
+  margin: 1rem 0;
+  font-family: 'Share Tech Mono', monospace;
+  animation: errorPulse 2s infinite;
+}
+
+@keyframes errorPulse {
+  0% { box-shadow: 0 0 5px rgba(255, 99, 71, 0.5); } /* Tomato shadow */
+  50% { box-shadow: 0 0 15px rgba(255, 99, 71, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(255, 99, 71, 0.5); }
+}
+
+.update-time {
+  color: #5ac8fa; /* Bright blue update time */
+  font-family: 'Share Tech Mono', monospace;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 0.9em;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+} 
