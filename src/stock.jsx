@@ -247,7 +247,7 @@ const StockControls = () => {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Stock Market Terminal</h1>
+      <h1 className="app-title">Stock Analyzer</h1>
       <div className="controls-row">
         <div className="control-item">
           <label className="label">Choose Stock:</label>
